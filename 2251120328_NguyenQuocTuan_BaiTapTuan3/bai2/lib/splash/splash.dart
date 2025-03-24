@@ -30,7 +30,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
             padding: const EdgeInsets.fromLTRB(0,350,0,0),
             child: Center(
               child: Image.asset(
-                'assets/logo_UTH.png',
+                'assets/Image/logo_UTH.png',
                 height: 100,
                 width: 1000,
               ),
@@ -44,6 +44,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
+                color: Colors.blue,
               ),
             ),
           )

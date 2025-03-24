@@ -8,7 +8,7 @@ class Get_Started_Third extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/new_message.png', height: 200),
+        Image.asset('assets/Image/new_message.png', height: 200),
         SizedBox(height: 30),
         Text(
           'Reminder Notification',

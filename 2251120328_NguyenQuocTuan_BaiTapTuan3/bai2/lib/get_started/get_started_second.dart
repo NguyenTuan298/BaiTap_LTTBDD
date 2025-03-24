@@ -8,7 +8,7 @@ class Get_Started_Second extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/charts.png', height: 200),
+        Image.asset('assets/Image/charts.png', height: 200),
         SizedBox(height: 30),
         Text(
           'Increase Work Effectiveness',

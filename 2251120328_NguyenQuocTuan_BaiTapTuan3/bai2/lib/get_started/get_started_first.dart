@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'get_started_second.dart';
 import 'get_started_third.dart';
+import 'package:bai2/smarttasks/todo_list.dart';
 
 void main() => runApp(MaterialApp(home: Get_Started_First()));
 
@@ -69,7 +70,7 @@ class _Get_Started_FirstState extends State<Get_Started_First> {
               },
               children: [
                 buildPage(
-                  image: 'assets/portfolio.png',
+                  image: 'assets/Image/portfolio.png',
                   title: 'Easy Time Management',
                   subtitle: 'With management based on priority and \n daily tasks, it will give you convenience in \n managing and determining the tasks that \n must be done first ',
                 ),
@@ -119,7 +120,11 @@ class _Get_Started_FirstState extends State<Get_Started_First> {
                           );
                         } else {
                           // Khi tới cuối sẽ quay lại trang đầu
-                          _pageController.jumpToPage(0);
+                          // _pageController.jumpToPage(0);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TodoList()),
+                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(

@@ -13,7 +13,7 @@ class _ListEmptyState extends State<ListEmpty> {
   late Future<List<Task>> futureTasks;
 
   @override
-  void initState() {
+  void initState() {        // Nó được sử dụng để khởi tạo trạng thái ban đầu của widget, như là việc gọi API để lấy dữ liệu hoặc thực hiện các thao tác setup.
     super.initState();
     futureTasks = ApiService.fetchTasks(context).then((tasks) {
       return tasks.where((t) => t.id != null).toList();
@@ -21,6 +21,16 @@ class _ListEmptyState extends State<ListEmpty> {
       print("Error fetching data: $error");
       return [];
     });
+
+    /*
+    - ApiService.fetchTasks(context): là một lời gọi API hoặc phương thức bất đồng bộ (asynchronous) trả về một Future chứa danh sách các tác vụ (tasks)
+    - context: có thể được sử dụng để truy cập vào các tài nguyên hoặc đối tượng trong widget tree, nhưng trong đoạn mã này, nó không được sử dụng trực tiếp
+    - then((tasks) => tasks.where((t) => t.id != null).toList())
+        + .then() là một phương thức của Future để xử lý kết quả khi Future hoàn thành thành công.
+        + Khi dữ liệu (danh sách tasks) được trả về từ fetchTasks, ta lọc các tác vụ có id != null bằng cách sử dụng phương thức .where() => Điều này có nghĩa là chỉ các tác vụ có id hợp lệ mới được giữ lại.
+        + .toList() chuyển đổi kết quả thành một danh sách.
+    - 
+     */
   }
 
   @override

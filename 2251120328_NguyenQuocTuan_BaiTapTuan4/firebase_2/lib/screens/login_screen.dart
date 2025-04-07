@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_2/screens/ProfileScreen.dart';
+import 'package:firebase_2/screens/profilescreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -26,8 +26,9 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 100),
             Image.asset('assets/logo_UTH.png', height: 180), // Logo trường
-            SizedBox(height: 30),
+            SizedBox(height: 10),
             Text(
                 "SmartTasks",
                 style: TextStyle(
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.blue,
               ),
             ),
-            SizedBox(height: 200),
+            SizedBox(height: 100),
 
             Text(
               "Welcome",

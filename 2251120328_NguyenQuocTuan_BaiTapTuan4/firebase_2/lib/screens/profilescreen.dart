@@ -30,37 +30,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
             SizedBox(height: 30),
             Row(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.all(1),
+                  padding: EdgeInsets.fromLTRB(1,1,1,1),
                   decoration: BoxDecoration(
                     color: Colors.blue[500],
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(22),
                   ),
                   child: Container(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 8),
                     child: IconButton(
-                        onPressed: (){
-                          MaterialPageRoute(builder: (context) => LoginScreen()
-                          );
-                        },
-                        icon: Icon(Icons.arrow_back_ios,size: 25,color: Colors.white),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginScreen()),
+                        );
+                      },
+                      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.white),
                     ),
                   ),
                 ),
-                Center(
-                  widthFactor: 3.5,
+                Padding(
+                  padding: const EdgeInsets.only(left: 60),
                   child: Text(
                     "Profile",
                     style: TextStyle(
@@ -83,15 +83,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   labelStyle: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 25
-                  )
-              ),
+                    fontSize: 25,
+                  )),
               style: TextStyle(
                 fontSize: 20,
               ),
               controller: TextEditingController(text: widget.user.displayName),
             ),
-
             SizedBox(height: 15),
             TextField(
               decoration: InputDecoration(
@@ -99,19 +97,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   labelStyle: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25
-                  )
-              ),
+                      fontSize: 25)),
               style: TextStyle(
                 fontSize: 20,
               ),
               controller: TextEditingController(text: widget.user.email),
               readOnly: true,
             ),
-
             SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.only(right: 260),
+            Align(
+              alignment: Alignment.centerLeft,
               child: Text(
                 "Date of Birth",
                 style: TextStyle(
@@ -120,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 15,),
+            SizedBox(height: 15),
             TextFormField(
               controller: _controller,
               decoration: InputDecoration(
@@ -132,27 +127,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               readOnly: true,
             ),
-
             SizedBox(height: 70),
-            Padding(
-              padding: const EdgeInsets.only(top: 200),
-              child: Container(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue[500],
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  ),
-                  onPressed: () async {
-                    await FirebaseAuth.instance.signOut();
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "Back",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue[500],
+                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                    ),
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Back",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                 ),

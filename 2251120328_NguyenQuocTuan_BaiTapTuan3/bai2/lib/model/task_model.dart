@@ -1,4 +1,4 @@
-class Task {
+class Task {                            // Lớp Task đại diện cho một tác vụ trong hệ thống quản lý tác vụ
   final String? id;
   final String title;
   final String description;
@@ -21,8 +21,11 @@ class Task {
     required this.attachments,
   });
 
-  factory Task.fromJson(Map<String, dynamic> json) {
+  factory Task.fromJson(Map<String, dynamic> json) {      // Phương thức fromJson là một factory method. Nó nhận vào một Map<String, dynamic> (dữ liệu JSON) và trả về một đối tượng Task
     return Task(
+      /* Các thuộc tính không bắt buộc như id, title, description, category, status, priority,và dueDate được lấy từ JSON
+       và nếu không có trong JSON, chúng sẽ có giá trị mặc định như chuỗi rỗng ('').
+       subtasks và attachments là các danh sách. Nếu không có trong JSON, chúng sẽ được khởi tạo là danh sách rỗng ([]). */
       id: json['id']?.toString(),
       title: json['title'] ?? '',
       description: json['description'] ?? '',
@@ -38,13 +41,14 @@ class Task {
           ?.map((attachment) => Attachment.fromJson(attachment))
           .toList() ??
           [],
-    );
+    );//
   }
 }
 
-class Subtask {
-  final String title;
-  final bool isCompleted;
+// CÁC CÔNG VIỆC CON
+class Subtask {                 // Lớp Subtask đại diện cho một công việc con trong một tác vụ
+  final String title;           // title: Tiêu đề của công việc con
+  final bool isCompleted;       // isCompleted: Trạng thái hoàn thành của công việc con (true nếu đã hoàn thành, false nếu chưa).
 
   Subtask({required this.title, required this.isCompleted});
 
@@ -56,8 +60,8 @@ class Subtask {
   }
 }
 
-class Attachment {
-  final String fileName;
+class Attachment {        // Lớp Attachment đại diện cho một tệp đính kèm của tác vụ
+  final String fileName;      // fileName: Tên tệp đính kèm.
 
   Attachment({required this.fileName});
 

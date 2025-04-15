@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Homework {
-  final String task;
-  final String description;
-
-  Homework({
-    required this.task,
-    required this.description,
-  });
-}
+import '../models/homework.dart';
 
 class HomeworkProvider extends ChangeNotifier {        //  Lớp HomeworkProvider cần kế thừa từ ChangeNotifier.
   final List<Homework> _homeworks = [
@@ -26,7 +17,7 @@ class HomeworkProvider extends ChangeNotifier {        //  Lớp HomeworkProvide
     ),
   ];                     // Danh sách để lưu trữ dữ liệu.
 
-  List<Homework> get homeworks => _homeworks;       // Đây là cách để truy cập danh sách từ bên ngoài (không phép chỉnh sửa trực tiếp)
+  List<Homework> get homeworks => _homeworks;       // Đây là cách để truy cập danh sách từ bên ngoài
 
   void addHomework(Homework newHomework) {
     _homeworks.add(newHomework);

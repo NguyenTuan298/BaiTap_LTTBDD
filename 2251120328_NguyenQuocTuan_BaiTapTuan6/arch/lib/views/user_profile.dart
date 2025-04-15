@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'homework_provider.dart';
+import '../models/homework.dart';
+import '../viewmodels/homework_viewmodel.dart';
 
 class User_Profile extends StatelessWidget {
   const User_Profile({super.key});
@@ -106,7 +106,7 @@ class User_Profile extends StatelessWidget {
           SizedBox(height: screenHeight * 0.001),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.05, // Căn trái và phải
+              horizontal: screenWidth * 0.05,
               vertical: screenHeight * 0.02,
             ),
             child: Container(

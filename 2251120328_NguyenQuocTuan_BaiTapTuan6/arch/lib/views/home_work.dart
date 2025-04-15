@@ -1,10 +1,10 @@
-import 'package:arch/screens/user_profile.dart';
+
+import 'package:arch/views/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../viewmodels/homework_viewmodel.dart';
 
-import 'homework_provider.dart';
-
-class Home_Work extends StatelessWidget {
+class  Home_Work extends StatelessWidget {
   const Home_Work({super.key});
 
   @override
@@ -44,7 +44,7 @@ class Home_Work extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: screenWidth * 0.27),
+                  SizedBox(width: screenWidth * 0.3),
                   const Expanded(
                     child: Text(
                       'List',
@@ -171,7 +171,7 @@ class Home_Work extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: Padding(
         padding: EdgeInsets.only(
-            right: screenWidth * 0.37, bottom: screenHeight * 0.07),
+            right: screenWidth * 0.38, bottom: screenHeight * 0.077),
         child: SizedBox(
           width: 70,
           height: 70,

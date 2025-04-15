@@ -1,5 +1,5 @@
-import 'package:arch/screens/homework.dart';
-import 'package:arch/screens/homework_provider.dart';
+import 'package:arch/viewmodels/homework_viewmodel.dart';
+import 'package:arch/views/home_work.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

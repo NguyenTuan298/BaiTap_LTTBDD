@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_2/screens/login_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatefulWidget {
   final User user;
@@ -12,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  DateTime? selectedDate; // Ngày đã chọn
+  DateTime? selectedDate;
   final TextEditingController _controller = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
@@ -30,6 +31,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  Future<void> _signOut() async {
+    await GoogleSignIn().signOut();
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,27 +46,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: 30),
             Row(
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(1,1,1,1),
-                  decoration: BoxDecoration(
-                    color: Colors.blue[500],
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.only(left: 8),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginScreen()),
-                        );
-                      },
-                      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.white),
-                    ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
+                  },
+                  icon: Icon(
+                      Icons.arrow_back_ios,
+                      size: 25,
+                      color: Colors.black
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 60),
+                  padding: const EdgeInsets.only(left: 75),
                   child: Text(
                     "Profile",
                     style: TextStyle(
@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               controller: TextEditingController(text: widget.user.email),
               readOnly: true,
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 25),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -115,7 +115,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
             TextFormField(
               controller: _controller,
               decoration: InputDecoration(
@@ -127,6 +126,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               readOnly: true,
             ),
+            SizedBox(height: 25),
+            Expanded(
+              child: Center(
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () async {
+                    await _signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                          (route) => false,
+                    );
+                  },
+                  icon:Icon(Icons.logout, size: 30, color: Colors.white,),
+                  label: Text(
+                    "Log out",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
             SizedBox(height: 70),
             Expanded(
               child: Align(
@@ -138,8 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       backgroundColor: Colors.blue[500],
                       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                     ),
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
+                    onPressed: () {
                       Navigator.pop(context);
                     },
                     child: Text(

@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Future<User?> signInWithGoogle() async {
+    await GoogleSignIn().signOut();
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
     final OAuthCredential credential = GoogleAuthProvider.credential(
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 100),
-            Image.asset('assets/logo_UTH.png', height: 180), // Logo trường
+            Image.asset('assets/logo_UTH.png', height: 180),
             SizedBox(height: 10),
             Text(
                 "SmartTasks",
